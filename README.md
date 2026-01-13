@@ -68,13 +68,21 @@ class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate {
 - **Real-Time Updates**: Dynamic content and navigation updates
 - **Multi-Screen**: Seamless iPhone and CarPlay coordination
 
-## Installation
+## Install as a Claude Code Skill
 
-Add this skill to Claude Code:
+This skill is available in the Claude Code marketplace. To install it:
 
-```bash
-claude mcp add-skill https://github.com/yourusername/carplay_claude_skill
 ```
+/plugin marketplace add Eyadkelleh/carplay_claude_skill
+```
+
+Then install the skill:
+
+```
+/plugin install carplay@carplay-marketplace
+```
+
+Once installed, Claude Code will automatically suggest this skill when you're working with CarPlay development.
 
 ## When to Use This Skill
 
