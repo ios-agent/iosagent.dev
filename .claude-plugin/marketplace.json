@@ -1,13 +1,28 @@
 {
   "name": "carplay-marketplace",
-  "owner": "Eyadkelleh",
+  "owner": {
+    "name": "Eyadkelleh",
+    "github": "Eyadkelleh"
+  },
   "plugins": [
     {
       "name": "carplay",
+      "source": ".",
       "description": "Use this skill when working with Apple CarPlay framework for building automotive apps including navigation, audio, communication, and utility experiences in iOS",
       "version": "1.0.0",
-      "author": "Eyadkelleh",
-      "tags": ["apple", "carplay", "ios", "swift", "automotive", "navigation", "audio"]
+      "author": {
+        "name": "Eyadkelleh",
+        "github": "Eyadkelleh"
+      },
+      "tags": [
+        "apple",
+        "carplay",
+        "ios",
+        "swift",
+        "automotive",
+        "navigation",
+        "audio"
+      ]
     }
   ]
 }
