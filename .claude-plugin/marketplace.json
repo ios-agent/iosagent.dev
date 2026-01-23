@@ -1,28 +1,18 @@
 {
   "name": "carplay-marketplace",
   "owner": {
-    "name": "Eyadkelleh",
-    "github": "Eyadkelleh"
+    "name": "Eyadkelleh"
+  },
+  "metadata": {
+    "description": "CarPlay development skills for Claude Code",
+    "homepage": "https://github.com/Eyadkelleh/carplay_claude_skill"
   },
   "plugins": [
     {
       "name": "carplay",
-      "source": ".",
-      "description": "Use this skill when working with Apple CarPlay framework for building automotive apps including navigation, audio, communication, and utility experiences in iOS",
       "version": "1.0.0",
-      "author": {
-        "name": "Eyadkelleh",
-        "github": "Eyadkelleh"
-      },
-      "tags": [
-        "apple",
-        "carplay",
-        "ios",
-        "swift",
-        "automotive",
-        "navigation",
-        "audio"
-      ]
+      "source": "./",
+      "description": "Use this skill when working with Apple CarPlay framework for building automotive apps including navigation, audio, communication, and utility experiences in iOS"
     }
   ]
 }
