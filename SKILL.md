@@ -30,11 +30,11 @@ Use these skills when working with:
 ## Installation
 
 ```bash
-npx skills add iosagent/iosagent.dev
+npx skills add ios-agent/iosagent.dev
 ```
 
 Or via Claude Code:
 
 ```
-/plugin marketplace add iosagent/iosagent.dev
+/plugin marketplace add ios-agent/iosagent.dev
 ```

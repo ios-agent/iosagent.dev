@@ -27,7 +27,7 @@ A collection of comprehensive iOS/macOS development skills for AI coding agents.
 Install these skills using the universal Agent Skills CLI:
 
 ```bash
-npx skills add iosagent/iosagent.dev
+npx skills add ios-agent/iosagent.dev
 ```
 
 This works with **30+ AI coding agents** including Claude Code, GitHub Copilot, Cursor, Cline, and more. Browse all skills at [skills.sh](https://skills.sh).
@@ -37,7 +37,7 @@ This works with **30+ AI coding agents** including Claude Code, GitHub Copilot, 
 Alternatively, install through the Claude Code marketplace:
 
 ```
-/plugin marketplace add iosagent/iosagent.dev
+/plugin marketplace add ios-agent/iosagent.dev
 ```
 
 Then install individual skills:

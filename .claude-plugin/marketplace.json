@@ -1,11 +1,11 @@
 {
   "name": "iosagent",
   "owner": {
-    "name": "iosagent"
+    "name": "ios-agent"
   },
   "metadata": {
     "description": "iOS/macOS development skills for AI coding agents",
-    "homepage": "https://github.com/iosagent/iosagent.dev"
+    "homepage": "https://github.com/ios-agent/iosagent.dev"
   },
   "plugins": [
     {
