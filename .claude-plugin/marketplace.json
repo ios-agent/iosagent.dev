@@ -1,18 +1,48 @@
 {
-  "name": "carplay-marketplace",
+  "name": "iosagent",
   "owner": {
-    "name": "Eyadkelleh"
+    "name": "iosagent"
   },
   "metadata": {
-    "description": "CarPlay development skills for Claude Code",
-    "homepage": "https://github.com/Eyadkelleh/carplay_claude_skill"
+    "description": "iOS/macOS development skills for AI coding agents",
+    "homepage": "https://github.com/iosagent/iosagent.dev"
   },
   "plugins": [
     {
       "name": "carplay",
       "version": "1.0.0",
-      "source": "./",
-      "description": "Use this skill when working with Apple CarPlay framework for building automotive apps including navigation, audio, communication, and utility experiences in iOS"
+      "source": "./carplay",
+      "description": "CarPlay framework for building automotive apps including navigation, audio, communication, and utility experiences"
+    },
+    {
+      "name": "swiftui",
+      "version": "1.0.0",
+      "source": "./swiftui",
+      "description": "SwiftUI framework for building user interfaces across iOS, macOS, watchOS, tvOS, and visionOS"
+    },
+    {
+      "name": "mapkit",
+      "version": "1.0.0",
+      "source": "./apple-mapkit",
+      "description": "MapKit framework for maps, annotations, directions, local search, and location features"
+    },
+    {
+      "name": "sirikit",
+      "version": "1.0.0",
+      "source": "./sirikit",
+      "description": "SiriKit framework for voice interactions, Shortcuts, custom intents, and intelligent suggestions"
+    },
+    {
+      "name": "widgetkit",
+      "version": "1.0.0",
+      "source": "./widgetkit",
+      "description": "WidgetKit framework for widgets, Live Activities, watch complications, and controls"
+    },
+    {
+      "name": "apple-foundation-models",
+      "version": "1.0.0",
+      "source": "./apple-foundation-models",
+      "description": "Apple Foundation Models framework for on-device AI and LLM capabilities in iOS/macOS apps"
     }
   ]
 }

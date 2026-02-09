@@ -1,97 +1,83 @@
-# CarPlay Claude Skill
+# iosagent.dev
 
-A comprehensive reference documentation skill for Apple CarPlay development. This skill helps developers build CarPlay-enabled iOS apps with navigation, audio, communication, and other automotive experiences.
+A collection of comprehensive iOS/macOS development skills for AI coding agents. These skills help developers build apps using Apple's native frameworks including CarPlay, SwiftUI, MapKit, SiriKit, WidgetKit, and Apple Foundation Models.
 
-## What This Skill Covers
+## Available Skills
 
-- **CarPlay App Development**: Building CarPlay-compatible iOS applications
-- **CPTemplateApplicationScene**: Managing the CarPlay app lifecycle
-- **Templates & UI**: Working with CPTemplate types for CarPlay interfaces
-- **Navigation Apps**: Implementing turn-by-turn navigation with CPNavigationSession
-- **Audio Apps**: Building audio streaming apps with CPNowPlayingTemplate
-- **Communication Apps**: Handling messaging and calling with CPMessageListItem
-- **EV Charging Apps**: Supporting electric vehicle charging workflows
-- **Quick Food Ordering**: Implementing food ordering experiences
-- **Fueling Apps**: Building fuel payment integrations
+| Skill | Description |
+|-------|-------------|
+| [CarPlay](carplay/SKILL.md) | Building CarPlay-enabled apps for automotive experiences |
+| [SwiftUI](swiftui/SKILL.md) | User interface framework for all Apple platforms |
+| [MapKit](apple-mapkit/SKILL.md) | Maps, location, directions, and place search |
+| [SiriKit](sirikit/SKILL.md) | Voice interactions, Shortcuts, and intelligent suggestions |
+| [WidgetKit](widgetkit/SKILL.md) | Widgets, Live Activities, and watch complications |
+| [Apple Foundation Models](apple-foundation-models/SKILL.md) | On-device AI and LLM capabilities |
 
 ## Requirements
 
 - **Xcode**: 15.0 or later
-- **iOS**: 14.0+ (CarPlay framework), iOS 17+ for latest features
-- **Entitlements**: CarPlay entitlement from Apple Developer Program
-- **Device**: iPhone with CarPlay support or CarPlay Simulator
+- **iOS**: 14.0+ (varies by framework)
+- **macOS**: 13.0+
+- **Device**: Physical device or Simulator
 
-## Core Implementation Pattern
+## Installation
 
-CarPlay apps follow a template-based architecture:
+### Via skills.sh (Recommended)
 
-```swift
-import CarPlay
+Install these skills using the universal Agent Skills CLI:
 
-class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate {
-    var interfaceController: CPInterfaceController?
-
-    func templateApplicationScene(
-        _ templateApplicationScene: CPTemplateApplicationScene,
-        didConnect interfaceController: CPInterfaceController
-    ) {
-        self.interfaceController = interfaceController
-
-        let template = CPListTemplate(
-            title: "My App",
-            sections: [/* sections */]
-        )
-        interfaceController.setRootTemplate(template, animated: true)
-    }
-}
+```bash
+npx skills add iosagent/iosagent.dev
 ```
 
-## Documentation Structure
+This works with **30+ AI coding agents** including Claude Code, GitHub Copilot, Cursor, Cline, and more. Browse all skills at [skills.sh](https://skills.sh).
 
-| File | Description |
-|------|-------------|
-| [Getting Started](references/getting_started.md) | Project setup and CarPlay entitlements |
-| [Templates](references/templates.md) | All CPTemplate types and usage |
-| [Navigation](references/navigation.md) | Turn-by-turn navigation implementation |
-| [Audio](references/audio.md) | Audio and media playback apps |
-| [Communication](references/communication.md) | Messaging and calling integration |
-| [Point of Interest](references/poi.md) | POI and location-based features |
-| [EV Charging](references/ev_charging.md) | Electric vehicle charging apps |
-| [API Reference](references/api_reference.md) | Complete CarPlay API documentation |
-| [Best Practices](references/best_practices.md) | Design guidelines and optimization |
+### Via Claude Code Marketplace
 
-## Key Features
-
-- **Privacy**: All processing happens on-device
-- **Template-Based UI**: Consistent, driver-safe interfaces
-- **Siri Integration**: Voice-first interaction support
-- **Real-Time Updates**: Dynamic content and navigation updates
-- **Multi-Screen**: Seamless iPhone and CarPlay coordination
-
-## Install as a Claude Code Skill
-
-This skill is available in the Claude Code marketplace. To install it:
+Alternatively, install through the Claude Code marketplace:
 
 ```
-/plugin marketplace add Eyadkelleh/carplay_claude_skill
+/plugin marketplace add iosagent/iosagent.dev
 ```
 
-Then install the skill:
+Then install individual skills:
 
 ```
-/plugin install carplay@carplay-marketplace
+/plugin install carplay@iosagent
+/plugin install swiftui@iosagent
+/plugin install mapkit@iosagent
+/plugin install sirikit@iosagent
+/plugin install widgetkit@iosagent
+/plugin install apple-foundation-models@iosagent
 ```
 
-Once installed, Claude Code will automatically suggest this skill when you're working with CarPlay development.
+## Skills Overview
 
-## When to Use This Skill
+### CarPlay
+Build CarPlay-enabled iOS apps with navigation, audio, communication, and utility experiences. Covers CPTemplateApplicationScene, all template types, navigation sessions, and more.
 
-This skill is automatically suggested when working with:
-- CarPlay framework and APIs
-- CPTemplate implementations
-- Navigation and mapping features
-- Automotive app development
-- In-car entertainment apps
+### SwiftUI
+Complete SwiftUI framework documentation covering views, modifiers, layout, state management, animations, navigation, and data flow for iOS, macOS, watchOS, tvOS, and visionOS.
+
+### MapKit
+Integrate Apple Maps with annotations, directions, local search, overlays, and LookAround. Supports both SwiftUI Map (iOS 17+) and MKMapView.
+
+### SiriKit
+Implement Siri voice interactions, Shortcuts, custom intents, and App Intents. Covers all system intent domains and custom intent definition.
+
+### WidgetKit
+Create widgets, Live Activities, watch complications, and controls. Covers all widget families, timeline providers, interactivity, and rendering modes.
+
+### Apple Foundation Models
+Build with Apple's on-device AI using SystemLanguageModel, guided generation, tool calling, and prompting patterns for iOS 26+.
+
+## When to Use These Skills
+
+These skills are automatically suggested when working with:
+- Apple platform frameworks (iOS, macOS, watchOS, tvOS, visionOS)
+- Native app development with Swift/SwiftUI
+- CarPlay, Siri, Widgets, Maps integration
+- On-device AI with Apple Foundation Models
 
 ## License
 
