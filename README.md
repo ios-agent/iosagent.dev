@@ -30,12 +30,33 @@ npx skills add ios-agent/iosagent.dev
 
 ### Install Individual Skills
 
+**CarPlay**
 ```bash
 npx skills add ios-agent/iosagent.dev --skill carplay
+```
+
+**SwiftUI**
+```bash
 npx skills add ios-agent/iosagent.dev --skill swiftui
+```
+
+**MapKit**
+```bash
 npx skills add ios-agent/iosagent.dev --skill mapkit
+```
+
+**SiriKit**
+```bash
 npx skills add ios-agent/iosagent.dev --skill sirikit
+```
+
+**WidgetKit**
+```bash
 npx skills add ios-agent/iosagent.dev --skill widgetkit
+```
+
+**Apple Foundation Models**
+```bash
 npx skills add ios-agent/iosagent.dev --skill apple-foundation-models
 ```
 
