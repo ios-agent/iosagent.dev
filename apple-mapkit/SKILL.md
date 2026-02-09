@@ -1,5 +1,5 @@
 ---
-name: apple-mapkit
+name: mapkit
 description: "Help developers integrate Apple MapKit into iOS/macOS apps. Use this skill when users ask to add a map to their app, display maps, show user location on a map, add markers/pins/annotations, implement map clustering, get directions/routing between locations, search for places/points of interest, implement MapKit features, work with MKMapView, SwiftUI Map, MKAnnotation, MKOverlay, MKDirections, MKLocalSearch, or any MapKit-related development task."
 ---
 

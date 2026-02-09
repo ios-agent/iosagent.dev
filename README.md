@@ -22,34 +22,24 @@ A collection of comprehensive iOS/macOS development skills for AI coding agents.
 
 ## Installation
 
-### Via skills.sh (Recommended)
-
-Install these skills using the universal Agent Skills CLI:
+### Install All Skills
 
 ```bash
 npx skills add ios-agent/iosagent.dev
 ```
 
+### Install Individual Skills
+
+```bash
+npx skills add ios-agent/iosagent.dev --skill carplay
+npx skills add ios-agent/iosagent.dev --skill swiftui
+npx skills add ios-agent/iosagent.dev --skill mapkit
+npx skills add ios-agent/iosagent.dev --skill sirikit
+npx skills add ios-agent/iosagent.dev --skill widgetkit
+npx skills add ios-agent/iosagent.dev --skill apple-foundation-models
+```
+
 This works with **30+ AI coding agents** including Claude Code, GitHub Copilot, Cursor, Cline, and more. Browse all skills at [skills.sh](https://skills.sh).
-
-### Via Claude Code Marketplace
-
-Alternatively, install through the Claude Code marketplace:
-
-```
-/plugin marketplace add ios-agent/iosagent.dev
-```
-
-Then install individual skills:
-
-```
-/plugin install carplay@iosagent
-/plugin install swiftui@iosagent
-/plugin install mapkit@iosagent
-/plugin install sirikit@iosagent
-/plugin install widgetkit@iosagent
-/plugin install apple-foundation-models@iosagent
-```
 
 ## Skills Overview
 

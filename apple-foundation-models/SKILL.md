@@ -1,5 +1,5 @@
 ---
-name: Apple Foundation Models
+name: apple-foundation-models
 description: Use this skill when working with Apple's Foundation Models framework for on-device AI and LLM capabilities in iOS/macOS apps
 version: 1.0.0
 ---

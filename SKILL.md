@@ -29,12 +29,19 @@ Use these skills when working with:
 
 ## Installation
 
+### Install All Skills
+
 ```bash
 npx skills add ios-agent/iosagent.dev
 ```
 
-Or via Claude Code:
+### Install Individual Skills
 
-```
-/plugin marketplace add ios-agent/iosagent.dev
+```bash
+npx skills add ios-agent/iosagent.dev --skill carplay
+npx skills add ios-agent/iosagent.dev --skill swiftui
+npx skills add ios-agent/iosagent.dev --skill mapkit
+npx skills add ios-agent/iosagent.dev --skill sirikit
+npx skills add ios-agent/iosagent.dev --skill widgetkit
+npx skills add ios-agent/iosagent.dev --skill apple-foundation-models
 ```
