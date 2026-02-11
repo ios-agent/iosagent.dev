@@ -14,6 +14,7 @@ A collection of comprehensive iOS/macOS development skills for AI coding agents.
 | [Apple Foundation Models](apple-foundation-models/SKILL.md) | On-device AI and LLM capabilities |
 | [ProximityReader](proximity-reader/SKILL.md) | Tap to Pay on iPhone, contactless payments, and ID verification |
 | [Apple Wallet](apple-wallet/SKILL.md) | Wallet passes — boarding passes, tickets, coupons, loyalty cards, and NFC |
+| [Metal](metal/SKILL.md) | GPU programming, shaders, render/compute pipelines, and Metal 4 |
 
 ## Requirements
 
@@ -67,6 +68,11 @@ npx skills add ios-agent/iosagent.dev --skill apple-foundation-models
 npx skills add ios-agent/iosagent.dev --skill apple-wallet
 ```
 
+**Metal**
+```bash
+npx skills add ios-agent/iosagent.dev --skill metal
+```
+
 This works with **30+ AI coding agents** including Claude Code, GitHub Copilot, Cursor, Cline, and more. Browse all skills at [skills.sh](https://skills.sh).
 
 ### Via Claude Code Marketplace
@@ -88,6 +94,7 @@ Then install individual skills:
 /plugin install apple-foundation-models@iosagent
 /plugin install proximity-reader@iosagent
 /plugin install apple-wallet@iosagent
+/plugin install metal@iosagent
 ```
 
 ## Skills Overview
@@ -116,6 +123,9 @@ Accept contactless payments on iPhone with Tap to Pay, read loyalty cards (VAS) 
 ### Apple Wallet
 Create, sign, distribute, and update Apple Wallet passes including boarding passes, event tickets, coupons, store/loyalty cards, and generic passes. Covers pass.json structure, .pkpass bundles, NFC integration, barcode formats, push-based updates, and identity verification.
 
+### Metal
+Write, debug, and optimize Metal GPU code including shaders (MSL), render pipelines, compute pipelines, buffer/texture management, ray tracing, and Metal 4 APIs. Covers MetalKit, MetalFX, Metal Performance Shaders, and Apple Silicon optimization.
+
 ## When to Use These Skills
 
 These skills are automatically suggested when working with:
@@ -125,6 +135,7 @@ These skills are automatically suggested when working with:
 - On-device AI with Apple Foundation Models
 - Contactless payments, Tap to Pay, and ID verification with ProximityReader
 - Apple Wallet passes, .pkpass bundles, NFC passes, and pass updates
+- GPU programming, Metal shaders, compute/render pipelines, and graphics
 
 ## License
 

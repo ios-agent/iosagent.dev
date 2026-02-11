@@ -55,6 +55,12 @@
       "version": "1.0.0",
       "source": "./apple-wallet",
       "description": "Apple Wallet passes — create, sign, distribute, and update boarding passes, event tickets, coupons, loyalty cards, and generic passes with PassKit"
+    },
+    {
+      "name": "metal",
+      "version": "1.0.0",
+      "source": "./metal",
+      "description": "Metal GPU programming — shaders (MSL), render/compute pipelines, buffer/texture management, ray tracing, MetalKit, MetalFX, and Metal 4 APIs"
     }
   ]
 }
