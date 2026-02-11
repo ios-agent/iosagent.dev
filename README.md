@@ -13,6 +13,7 @@ A collection of comprehensive iOS/macOS development skills for AI coding agents.
 | [WidgetKit](widgetkit/SKILL.md) | Widgets, Live Activities, and watch complications |
 | [Apple Foundation Models](apple-foundation-models/SKILL.md) | On-device AI and LLM capabilities |
 | [ProximityReader](proximity-reader/SKILL.md) | Tap to Pay on iPhone, contactless payments, and ID verification |
+| [Apple Wallet](apple-wallet/SKILL.md) | Wallet passes — boarding passes, tickets, coupons, loyalty cards, and NFC |
 
 ## Requirements
 
@@ -61,6 +62,11 @@ npx skills add ios-agent/iosagent.dev --skill widgetkit
 npx skills add ios-agent/iosagent.dev --skill apple-foundation-models
 ```
 
+**Apple Wallet**
+```bash
+npx skills add ios-agent/iosagent.dev --skill apple-wallet
+```
+
 This works with **30+ AI coding agents** including Claude Code, GitHub Copilot, Cursor, Cline, and more. Browse all skills at [skills.sh](https://skills.sh).
 
 ### Via Claude Code Marketplace
@@ -81,6 +87,7 @@ Then install individual skills:
 /plugin install widgetkit@iosagent
 /plugin install apple-foundation-models@iosagent
 /plugin install proximity-reader@iosagent
+/plugin install apple-wallet@iosagent
 ```
 
 ## Skills Overview
@@ -106,6 +113,9 @@ Build with Apple's on-device AI using SystemLanguageModel, guided generation, to
 ### ProximityReader
 Accept contactless payments on iPhone with Tap to Pay, read loyalty cards (VAS) from Apple Wallet, implement Store and Forward for offline scenarios, and verify mobile driver's licenses and IDs using the Verifier API.
 
+### Apple Wallet
+Create, sign, distribute, and update Apple Wallet passes including boarding passes, event tickets, coupons, store/loyalty cards, and generic passes. Covers pass.json structure, .pkpass bundles, NFC integration, barcode formats, push-based updates, and identity verification.
+
 ## When to Use These Skills
 
 These skills are automatically suggested when working with:
@@ -114,6 +124,7 @@ These skills are automatically suggested when working with:
 - CarPlay, Siri, Widgets, Maps integration
 - On-device AI with Apple Foundation Models
 - Contactless payments, Tap to Pay, and ID verification with ProximityReader
+- Apple Wallet passes, .pkpass bundles, NFC passes, and pass updates
 
 ## License
 
