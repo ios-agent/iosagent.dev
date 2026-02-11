@@ -12,6 +12,7 @@ A collection of comprehensive iOS/macOS development skills for AI coding agents.
 | [SiriKit](sirikit/SKILL.md) | Voice interactions, Shortcuts, and intelligent suggestions |
 | [WidgetKit](widgetkit/SKILL.md) | Widgets, Live Activities, and watch complications |
 | [Apple Foundation Models](apple-foundation-models/SKILL.md) | On-device AI and LLM capabilities |
+| [ProximityReader](proximity-reader/SKILL.md) | Tap to Pay on iPhone, contactless payments, and ID verification |
 
 ## Requirements
 
@@ -62,6 +63,26 @@ npx skills add ios-agent/iosagent.dev --skill apple-foundation-models
 
 This works with **30+ AI coding agents** including Claude Code, GitHub Copilot, Cursor, Cline, and more. Browse all skills at [skills.sh](https://skills.sh).
 
+### Via Claude Code Marketplace
+
+Alternatively, install through the Claude Code marketplace:
+
+```
+/plugin marketplace add iosagent/iosagent.dev
+```
+
+Then install individual skills:
+
+```
+/plugin install carplay@iosagent
+/plugin install swiftui@iosagent
+/plugin install mapkit@iosagent
+/plugin install sirikit@iosagent
+/plugin install widgetkit@iosagent
+/plugin install apple-foundation-models@iosagent
+/plugin install proximity-reader@iosagent
+```
+
 ## Skills Overview
 
 ### CarPlay
@@ -82,6 +103,9 @@ Create widgets, Live Activities, watch complications, and controls. Covers all w
 ### Apple Foundation Models
 Build with Apple's on-device AI using SystemLanguageModel, guided generation, tool calling, and prompting patterns for iOS 26+.
 
+### ProximityReader
+Accept contactless payments on iPhone with Tap to Pay, read loyalty cards (VAS) from Apple Wallet, implement Store and Forward for offline scenarios, and verify mobile driver's licenses and IDs using the Verifier API.
+
 ## When to Use These Skills
 
 These skills are automatically suggested when working with:
@@ -89,6 +113,7 @@ These skills are automatically suggested when working with:
 - Native app development with Swift/SwiftUI
 - CarPlay, Siri, Widgets, Maps integration
 - On-device AI with Apple Foundation Models
+- Contactless payments, Tap to Pay, and ID verification with ProximityReader
 
 ## License
 

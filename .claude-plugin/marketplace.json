@@ -43,6 +43,12 @@
       "version": "1.0.0",
       "source": "./apple-foundation-models",
       "description": "Apple Foundation Models framework for on-device AI and LLM capabilities in iOS/macOS apps"
+    },
+    {
+      "name": "proximity-reader",
+      "version": "1.0.0",
+      "source": "./proximity-reader",
+      "description": "ProximityReader framework for Tap to Pay on iPhone, contactless payments, loyalty card (VAS) reading, Store and Forward, and mobile document/ID verification"
     }
   ]
 }
