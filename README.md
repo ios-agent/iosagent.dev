@@ -16,6 +16,7 @@ A collection of comprehensive iOS/macOS development skills for AI coding agents.
 | [Apple Wallet](apple-wallet/SKILL.md) | Wallet passes — boarding passes, tickets, coupons, loyalty cards, and NFC |
 | [Metal](metal/SKILL.md) | GPU programming, shaders, render/compute pipelines, and Metal 4 |
 | [Tap to Pay](tap-to-pay/SKILL.md) | Tap to Pay on iPhone — ProximityReader, PSP integration, entitlements, and marketing |
+| [CoreLocation](corelocation/SKILL.md) | Location services, GPS, geofencing, geocoding, beacons, and compass |
 
 ## Requirements
 
@@ -79,6 +80,11 @@ npx skills add ios-agent/iosagent.dev --skill metal
 npx skills add ios-agent/iosagent.dev --skill tap-to-pay
 ```
 
+**CoreLocation**
+```bash
+npx skills add ios-agent/iosagent.dev --skill corelocation
+```
+
 This works with **30+ AI coding agents** including Claude Code, GitHub Copilot, Cursor, Cline, and more. Browse all skills at [skills.sh](https://skills.sh).
 
 ### Via Claude Code Marketplace
@@ -102,6 +108,7 @@ Then install individual skills:
 /plugin install apple-wallet@iosagent
 /plugin install metal@iosagent
 /plugin install tap-to-pay@iosagent
+/plugin install corelocation@iosagent
 ```
 
 ## Skills Overview
@@ -136,6 +143,9 @@ Write, debug, and optimize Metal GPU code including shaders (MSL), render pipeli
 ### Tap to Pay
 Implement Tap to Pay on iPhone using the ProximityReader framework. Covers PSP integration, entitlement requests, contactless payment acceptance, loyalty card reading, PIN entry, marketing guidelines, and regional availability.
 
+### CoreLocation
+Location services for GPS, geofencing, geocoding, beacons, and compass headings. Covers CLLocationManager, async/await live updates (iOS 17+), CLMonitor condition monitoring, authorization flows, background location, and power optimization.
+
 ## When to Use These Skills
 
 These skills are automatically suggested when working with:
@@ -147,6 +157,7 @@ These skills are automatically suggested when working with:
 - Apple Wallet passes, .pkpass bundles, NFC passes, and pass updates
 - GPU programming, Metal shaders, compute/render pipelines, and graphics
 - Tap to Pay on iPhone, PSP integration, and contactless payment acceptance
+- Location services, GPS, geofencing, geocoding, beacons, and compass with CoreLocation
 
 ## License
 
