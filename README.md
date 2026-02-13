@@ -15,6 +15,7 @@ A collection of comprehensive iOS/macOS development skills for AI coding agents.
 | [ProximityReader](proximity-reader/SKILL.md) | Tap to Pay on iPhone, contactless payments, and ID verification |
 | [Apple Wallet](apple-wallet/SKILL.md) | Wallet passes — boarding passes, tickets, coupons, loyalty cards, and NFC |
 | [Metal](metal/SKILL.md) | GPU programming, shaders, render/compute pipelines, and Metal 4 |
+| [Tap to Pay](tap-to-pay/SKILL.md) | Tap to Pay on iPhone — ProximityReader, PSP integration, entitlements, and marketing |
 
 ## Requirements
 
@@ -73,6 +74,11 @@ npx skills add ios-agent/iosagent.dev --skill apple-wallet
 npx skills add ios-agent/iosagent.dev --skill metal
 ```
 
+**Tap to Pay**
+```bash
+npx skills add ios-agent/iosagent.dev --skill tap-to-pay
+```
+
 This works with **30+ AI coding agents** including Claude Code, GitHub Copilot, Cursor, Cline, and more. Browse all skills at [skills.sh](https://skills.sh).
 
 ### Via Claude Code Marketplace
@@ -95,6 +101,7 @@ Then install individual skills:
 /plugin install proximity-reader@iosagent
 /plugin install apple-wallet@iosagent
 /plugin install metal@iosagent
+/plugin install tap-to-pay@iosagent
 ```
 
 ## Skills Overview
@@ -126,6 +133,9 @@ Create, sign, distribute, and update Apple Wallet passes including boarding pass
 ### Metal
 Write, debug, and optimize Metal GPU code including shaders (MSL), render pipelines, compute pipelines, buffer/texture management, ray tracing, and Metal 4 APIs. Covers MetalKit, MetalFX, Metal Performance Shaders, and Apple Silicon optimization.
 
+### Tap to Pay
+Implement Tap to Pay on iPhone using the ProximityReader framework. Covers PSP integration, entitlement requests, contactless payment acceptance, loyalty card reading, PIN entry, marketing guidelines, and regional availability.
+
 ## When to Use These Skills
 
 These skills are automatically suggested when working with:
@@ -136,6 +146,7 @@ These skills are automatically suggested when working with:
 - Contactless payments, Tap to Pay, and ID verification with ProximityReader
 - Apple Wallet passes, .pkpass bundles, NFC passes, and pass updates
 - GPU programming, Metal shaders, compute/render pipelines, and graphics
+- Tap to Pay on iPhone, PSP integration, and contactless payment acceptance
 
 ## License
 
