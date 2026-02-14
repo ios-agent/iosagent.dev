@@ -17,6 +17,7 @@ A collection of comprehensive iOS/macOS development skills for AI coding agents.
 | [Metal](metal/SKILL.md) | GPU programming, shaders, render/compute pipelines, and Metal 4 |
 | [Tap to Pay](tap-to-pay/SKILL.md) | Tap to Pay on iPhone — ProximityReader, PSP integration, entitlements, and marketing |
 | [CoreLocation](corelocation/SKILL.md) | Location services, GPS, geofencing, geocoding, beacons, and compass |
+| [App Clip](app-clip/SKILL.md) | Lightweight instant app experiences, invocation URLs, and App Clip Codes |
 
 ## Requirements
 
@@ -85,6 +86,11 @@ npx skills add ios-agent/iosagent.dev --skill tap-to-pay
 npx skills add ios-agent/iosagent.dev --skill corelocation
 ```
 
+**App Clip**
+```bash
+npx skills add ios-agent/iosagent.dev --skill app-clip
+```
+
 This works with **30+ AI coding agents** including Claude Code, GitHub Copilot, Cursor, Cline, and more. Browse all skills at [skills.sh](https://skills.sh).
 
 ### Via Claude Code Marketplace
@@ -109,6 +115,7 @@ Then install individual skills:
 /plugin install metal@iosagent
 /plugin install tap-to-pay@iosagent
 /plugin install corelocation@iosagent
+/plugin install app-clip@iosagent
 ```
 
 ## Skills Overview
@@ -146,6 +153,9 @@ Implement Tap to Pay on iPhone using the ProximityReader framework. Covers PSP i
 ### CoreLocation
 Location services for GPS, geofencing, geocoding, beacons, and compass headings. Covers CLLocationManager, async/await live updates (iOS 17+), CLMonitor condition monitoring, authorization flows, background location, and power optimization.
 
+### App Clip
+Create lightweight, instant app experiences that users can discover and use without installing the full app. Covers App Clip targets, invocation URLs, App Clip Codes, Smart App Banners, NFC integration, size limits, App Clip experiences in App Store Connect, and transitioning users to the full app.
+
 ## When to Use These Skills
 
 These skills are automatically suggested when working with:
@@ -158,6 +168,7 @@ These skills are automatically suggested when working with:
 - GPU programming, Metal shaders, compute/render pipelines, and graphics
 - Tap to Pay on iPhone, PSP integration, and contactless payment acceptance
 - Location services, GPS, geofencing, geocoding, beacons, and compass with CoreLocation
+- App Clips, lightweight instant apps, invocation URLs, App Clip Codes, and instant experiences
 
 ## License
 
