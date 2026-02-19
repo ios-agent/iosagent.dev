@@ -61,6 +61,12 @@
       "version": "1.0.0",
       "source": "./metal",
       "description": "Metal GPU programming — shaders (MSL), render/compute pipelines, buffer/texture management, ray tracing, MetalKit, MetalFX, and Metal 4 APIs"
+    },
+    {
+      "name": "carplay-ordering",
+      "version": "1.0.0",
+      "source": "./carplay-ordering",
+      "description": "CarPlay quick-ordering apps — food/drink ordering, pickup, POI templates, Live Activities, and push notification updates for order status"
     }
   ]
 }

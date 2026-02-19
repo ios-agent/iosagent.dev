@@ -18,6 +18,7 @@ A collection of comprehensive iOS/macOS development skills for AI coding agents.
 | [Tap to Pay](tap-to-pay/SKILL.md) | Tap to Pay on iPhone — ProximityReader, PSP integration, entitlements, and marketing |
 | [CoreLocation](corelocation/SKILL.md) | Location services, GPS, geofencing, geocoding, beacons, and compass |
 | [App Clip](app-clip/SKILL.md) | Lightweight instant app experiences, invocation URLs, and App Clip Codes |
+| [CarPlay Ordering](carplay-ordering/SKILL.md) | CarPlay quick-ordering apps — food/drink ordering, pickup, POI templates, and Live Activities |
 
 ## Requirements
 
@@ -91,6 +92,11 @@ npx skills add ios-agent/iosagent.dev --skill corelocation
 npx skills add ios-agent/iosagent.dev --skill app-clip
 ```
 
+**CarPlay Ordering**
+```bash
+npx skills add ios-agent/iosagent.dev --skill carplay-ordering
+```
+
 This works with **30+ AI coding agents** including Claude Code, GitHub Copilot, Cursor, Cline, and more. Browse all skills at [skills.sh](https://skills.sh).
 
 ### Via Claude Code Marketplace
@@ -116,6 +122,7 @@ Then install individual skills:
 /plugin install tap-to-pay@iosagent
 /plugin install corelocation@iosagent
 /plugin install app-clip@iosagent
+/plugin install carplay-ordering@iosagent
 ```
 
 ## Skills Overview
@@ -156,6 +163,9 @@ Location services for GPS, geofencing, geocoding, beacons, and compass headings.
 ### App Clip
 Create lightweight, instant app experiences that users can discover and use without installing the full app. Covers App Clip targets, invocation URLs, App Clip Codes, Smart App Banners, NFC integration, size limits, App Clip experiences in App Store Connect, and transitioning users to the full app.
 
+### CarPlay Ordering
+Build CarPlay quick-ordering apps for food/drink ordering and pickup. Covers CPPointOfInterestTemplate, CPListTemplate, CPTabBarTemplate, CPInterfaceController, entitlement setup, map-based POI selection, order placement, Live Activity integration, and push notification updates for order status.
+
 ## When to Use These Skills
 
 These skills are automatically suggested when working with:
@@ -169,6 +179,7 @@ These skills are automatically suggested when working with:
 - Tap to Pay on iPhone, PSP integration, and contactless payment acceptance
 - Location services, GPS, geofencing, geocoding, beacons, and compass with CoreLocation
 - App Clips, lightweight instant apps, invocation URLs, App Clip Codes, and instant experiences
+- CarPlay quick-ordering apps, food/drink ordering, pickup, POI templates, Live Activities, and order status updates
 
 ## License
 
