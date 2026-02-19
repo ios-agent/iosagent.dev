@@ -1,7 +1,7 @@
 ---
 name: carplay
-description: CarPlay framework for iOS in-car applications
-version: 1.0
+description: CarPlay framework for iOS in-car applications — audio, communication, navigation, parking, EV charging, quick food ordering, fueling, driving task, public safety, and voice-based conversational apps. Includes widgets, live activities, CarPlay Ultra, and instrument cluster support.
+version: 2.0
 ---
 
 # CarPlay Skill
@@ -14,10 +14,16 @@ Use this skill when:
 - Creating navigation apps with turn-by-turn guidance
 - Implementing communication apps (messaging, VoIP)
 - Building parking, EV charging, or food ordering apps
+- Building driving task, fueling, or public safety apps
+- Creating voice-based conversational apps (iOS 26.4+)
+- Adding widgets or live activities to CarPlay (iOS 26+)
+- Implementing CarPlay notifications
+- Enabling multitouch navigation on CarPlay maps (iOS 26+)
+- Providing instrument cluster or HUD metadata (iOS 17.4+)
 - Working with CPTemplate, CPInterfaceController, or any CarPlay APIs
 
 ## Description
-Complete CarPlay framework documentation covering audio, communication, navigation, parking, EV charging, and food ordering integrations. Includes all templates (CPListTemplate, CPMapTemplate, CPGridTemplate, etc.), UI elements, and navigation APIs.
+Complete CarPlay framework documentation covering all 10 app categories: audio, communication, navigation, parking, EV charging, quick food ordering, fueling, driving task, public safety, and voice-based conversational. Includes all templates, UI elements, navigation APIs, widgets, live activities, CarPlay Ultra, notifications, instrument cluster metadata, and multitouch navigation.
 
 ## Quick Reference
 
@@ -36,12 +42,18 @@ Complete CarPlay framework documentation covering audio, communication, navigati
 - `CPSessionConfiguration`
 - `CPTemplateApplicationScene`
 - `CPTemplateApplicationSceneDelegate`
+- `CPTemplateApplicationScene.open(_:options:completionHandler:)`
 
 ### Navigation
 - `CPManeuver`
 - `CPNavigationSession`
 - `CPRouteChoice`
+- `CPRouteInformation`
 - `CPTrip`
+- `CPManeuverType`
+- `CPJunctionType`
+- `CPTrafficSide`
+- `CPLaneStatus`
 
 ### Poi
 - `CPPointOfInterest`
@@ -83,6 +95,14 @@ Complete CarPlay framework documentation covering audio, communication, navigati
 - `CPTemplateApplicationInstrumentClusterScene`
 - `CPTemplateApplicationInstrumentClusterSceneDelegate`
 
+### Notifications
+- `UNAuthorizationOptions.carPlay`
+- `.allowInCarPlay`
+
+### Widgets & Live Activities
+- `.supportedFamilies`
+- `.supplementalActivityFamilies`
+
 
 ## Key Concepts
 
@@ -91,7 +111,11 @@ Complete CarPlay framework documentation covering audio, communication, navigati
 - iOS 13.4+ (Dashboard scenes)
 - iOS 14.0+ (Tab Bar, POI, Now Playing)
 - iOS 15.4+ (Instrument Cluster)
-- iOS 17.4+ (CPRouteInformation)
+- iOS 16.0+ (Fueling, Driving Task categories; POI selectedPinImage; Information nav bar buttons)
+- iOS 17.4+ (CPRouteInformation, resumeTrip, navigation metadata, re-route)
+- iOS 18.4+ (Sports mode for Now Playing)
+- iOS 26+ (Widgets in CarPlay, Live Activities in CarPlay, multitouch navigation, list element styles)
+- iOS 26.4+ (Voice-based conversational apps, voice control action/nav bar buttons)
 - iPadOS 12.0+
 - Mac Catalyst 13.1+
 
@@ -99,31 +123,47 @@ Complete CarPlay framework documentation covering audio, communication, navigati
 
 **⚠️ Important:** CarPlay apps require entitlements from Apple. You must request and receive approval for your specific app category before your app can connect to CarPlay.
 
-CarPlay supports apps in the following categories (each requires a separate entitlement):
+CarPlay supports apps in the following 10 categories (each requires a separate entitlement):
 
-- **Audio & Podcasts**: Music, podcasts, audiobooks, and radio apps
+- **Audio & Podcasts** (iOS 12+, depth limit: 5)
   - Entitlement: `com.apple.developer.carplay-audio`
-  - Requirements: Audio playback, Now Playing integration
+  - Requirements: Audio playback, Now Playing integration, `MPNowPlayingInfoCenter`
 
-- **Communication**: Messaging and VoIP calling apps
+- **Communication** (iOS 12+, depth limit: 5)
   - Entitlement: `com.apple.developer.carplay-communication`
-  - Requirements: CallKit integration, Siri integration
+  - Requirements: CallKit integration, SiriKit integration
 
-- **Navigation**: Turn-by-turn navigation and maps
+- **Navigation** (iOS 12+, depth limit: 5)
   - Entitlement: `com.apple.developer.carplay-maps`
-  - Requirements: Real-time navigation, route guidance
+  - Requirements: Real-time navigation, route guidance, map rendering
 
-- **Parking**: Finding and paying for parking
+- **Parking** (iOS 14+, depth limit: 5)
   - Entitlement: `com.apple.developer.carplay-parking`
   - Requirements: Location services, parking availability
 
-- **EV Charging**: Locating and managing electric vehicle charging
+- **EV Charging** (iOS 14+, depth limit: 5)
   - Entitlement: `com.apple.developer.carplay-charging`
   - Requirements: Charging station data, availability status
 
-- **Food Ordering**: Quick service food ordering
-  - Entitlement: `com.apple.developer.carplay-quick-food`
-  - Requirements: Menu browsing, order placement
+- **Quick Food Ordering** (iOS 14+, depth limit: 3)
+  - Entitlement: `com.apple.developer.carplay-quick-ordering`
+  - Requirements: Streamlined menu browsing, order placement, pickup
+
+- **Fueling** (iOS 16+, depth limit: 3)
+  - Entitlement: `com.apple.developer.carplay-fueling`
+  - Requirements: Station locations, pump control, payment
+
+- **Driving Task** (iOS 16+, depth limit: 3)
+  - Entitlement: `com.apple.developer.carplay-driving-task`
+  - Requirements: Tasks done while driving (road conditions, tolls, accessories). Must not duplicate navigation.
+
+- **Public Safety** (iOS 14+, depth limit: 3)
+  - Entitlement: `com.apple.developer.carplay-public-safety`
+  - Requirements: Real-time safety information (hazards, speed cameras, emergency alerts)
+
+- **Voice-Based Conversational** (iOS 26.4+, depth limit: 3)
+  - Entitlement: `com.apple.developer.carplay-voice-based-conversation`
+  - Requirements: Primarily voice-driven interaction. Uses `CPVoiceControlTemplate` as primary UI.
 
 **How to request entitlements:**
 1. Visit https://developer.apple.com/contact/carplay/
@@ -137,6 +177,76 @@ CarPlay uses a template-based system where Apple provides the UI components and 
 - Consistent user experience across all CarPlay apps
 - Automatic adaptation to different vehicle displays
 
+### Template Availability Matrix
+
+Not all templates are available to every category. Key restrictions:
+- **Navigation only:** `CPMapTemplate`
+- **Communication only:** `CPContactTemplate`
+- **Audio apps:** Max 4 tabs in `CPTabBarTemplate`; all others: max 5 tabs
+- **Food ordering / Fueling / Driving task / Public safety / Voice-based:** Template depth limit of 3 (vs. 5 for audio, communication, navigation, parking, EV charging)
+
+See `references/developer_guide.md` for full per-category template lists.
+
+### CarPlay Ultra
+
+CarPlay Ultra is Apple's next-generation in-vehicle experience that deeply integrates with the vehicle's displays, including the instrument cluster, center console, and passenger displays. Apps that support CarPlay automatically work with CarPlay Ultra — no additional API adoption is required. CarPlay Ultra uses the same template-based system and entitlements.
+
+### Widgets in CarPlay (iOS 26+)
+
+WidgetKit widgets can appear on the CarPlay home screen. To support CarPlay:
+- Add `.accessoryCircular` or `.accessoryRectangular` to your widget's `supportedFamilies`
+- Keep widget content simple and glanceable — no interactive controls
+- Widgets refresh on the same timeline as the iPhone
+
+### Live Activities in CarPlay (iOS 26+)
+
+Live Activities can appear in CarPlay for real-time updates (delivery tracking, sports scores, ride status). To opt in:
+- Add `.carPlay` to your `ActivityConfiguration`'s `supplementalActivityFamilies`
+- Use compact and minimal presentations suitable for driving
+- Live Activities appear as persistent banners in the CarPlay interface
+
+### Voice-Based Conversational Apps (iOS 26.4+)
+
+A new app category for AI assistants and voice-driven experiences. Uses `CPVoiceControlTemplate` as the primary interface with:
+- Action buttons for quick commands below the voice visualization
+- Navigation bar buttons for supplemental controls
+- Minimal visual UI — interaction is primarily through speech
+
+### Notifications in CarPlay
+
+Apps can deliver notifications to CarPlay. Requirements:
+- Request `.carPlay` in `UNAuthorizationOptions` when requesting notification permission
+- Set `.allowInCarPlay` on `UNNotificationCategory` for categories that should appear on the CarPlay display
+- Keep notification content brief and relevant to driving context
+
+### Assets Size Guide
+
+| Asset | Recommended Size |
+|---|---|
+| List item image | 44×44 pt (@2x: 88×88 px, @3x: 132×132 px) |
+| Grid button image | 44×44 pt |
+| Map button image | 44×44 pt |
+| Tab bar icon | 30×30 pt |
+| Alert image | 44×44 pt |
+| POI pin image | 44×44 pt |
+| Navigation maneuver symbol | 44×44 pt |
+| Now Playing artwork | 44×44 pt (thumbnail), up to 256×256 pt (full) |
+
+### Audio Handling
+
+- Use `AVAudioSession` category `.playback` for audio apps
+- Navigation voice prompts should use mode `.voicePrompt` with options `.duckOthers` and `.interruptSpokenAudioAndMixWithOthers`
+- Audio apps must respond to `MPRemoteCommandCenter` events (play, pause, skip)
+- Activate audio session before playback; deactivate when done
+
+### Accessing Data While iPhone is Locked
+
+When the iPhone is locked, file access may be restricted. Use `FileProtectionType.completeUntilFirstUserAuthentication` or `.none` for files your CarPlay app needs. The default `.completeUnlessOpen` may prevent access.
+
+### Launching Other Apps
+
+CarPlay apps can open other apps using `CPTemplateApplicationScene.open(_:options:completionHandler:)`. This is useful for handing off to a phone-based flow (e.g., completing a purchase). The system will prompt the user before switching.
+
 ## Usage Guidelines
 
 1. **Use appropriate templates** for your app category
@@ -148,13 +258,37 @@ CarPlay uses a template-based system where Apple provides the UI components and 
 
 ### Testing with CarPlay Simulator
 
-The CarPlay Simulator in Xcode allows you to test your app without a physical vehicle:
+There are two ways to test CarPlay:
 
-**Setup:**
+**Option 1: Xcode Simulator Window**
 1. Open your CarPlay app project in Xcode
 2. Select an iOS Simulator as your run destination
 3. In the Simulator menu: **I/O > External Displays > CarPlay**
 4. A CarPlay display window will appear alongside the iOS simulator
+
+**Option 2: Standalone CarPlay Simulator (Mac App)**
+1. Download **Additional Tools for Xcode** from developer.apple.com
+2. Install the CarPlay Simulator app
+3. Connect a physical iPhone to your Mac
+4. The CarPlay Simulator connects to your device and displays the CarPlay interface
+
+**Enable Extra Options:**
+```bash
+defaults write com.apple.iphonesimulator CarPlayExtraOptions -bool YES
+```
+This enables additional options including screen size selection and cluster display settings.
+
+**Navigation Screen Sizes for Testing:**
+
+| Screen Size | Scale |
+|---|---|
+| 748 × 456 | @2x |
+| 800 × 480 | @2x |
+| 960 × 540 | @2x |
+| 1024 × 600 | @2x |
+| 1080 × 600 | @2x |
+| 1280 × 720 | @2x |
+| 900 × 1200 | @3x |
 
 **Simulator Features:**
 - Test all CarPlay templates and UI elements
@@ -162,7 +296,7 @@ The CarPlay Simulator in Xcode allows you to test your app without a physical ve
 - Test different screen sizes and aspect ratios
 - Simulate Siri interactions and voice commands
 - Test connection/disconnection scenarios
-- Debug layout issues before vehicle testing
+- Test instrument cluster rendering (with extra options enabled)
 
 **Limitations:**
 - Cannot test actual vehicle integration
@@ -170,7 +304,7 @@ The CarPlay Simulator in Xcode allows you to test your app without a physical ve
 - Some vehicle-specific features unavailable
 - Audio routing may differ from actual vehicles
 
-**Best Practice:** Always test in the simulator first, then verify in a physical vehicle or CarPlay-compatible head unit before release.
+**Best Practice:** Always test in the simulator first across multiple screen sizes, then verify in a physical vehicle or CarPlay-compatible head unit before release.
 
 ## Navigation
 
@@ -178,6 +312,7 @@ See the `references/` directory for detailed API documentation organized by cate
 - `references/api_reference.md` - Api Reference
 - `references/communication.md` - Communication
 - `references/dashboard.md` - Dashboard and Instrument Cluster
+- `references/developer_guide.md` - Developer Guide (categories, walkthroughs, testing, publishing)
 - `references/getting_started.md` - Getting Started
 - `references/navigation.md` - Navigation
 - `references/poi.md` - Poi
@@ -189,9 +324,13 @@ See the `references/` directory for detailed API documentation organized by cate
 
 - **Scene Management**: Implement `CPTemplateApplicationSceneDelegate` to handle CarPlay connection
 - **Template Limits**: Respect maximum item counts (CPListTemplate: 12 sections, CPGridTemplate: 8 buttons)
-- **Image Sizes**: Follow recommended image sizes for templates and UI elements
+- **Template Depth Limits**: Audio, communication, navigation, parking, and EV charging apps: max 5 templates deep. Food ordering, fueling, driving task, public safety, and voice-based: max 3 templates deep.
+- **Image Sizes**: Follow recommended image sizes for templates and UI elements (see Assets Size Guide)
 - **Dynamic Updates**: Use update methods (`updateSections`, `updateButtons`) to refresh content
 - **Navigation Hierarchy**: Use push/pop for navigation, present for modals
+- **Audio Session Management**: Configure `AVAudioSession` appropriately — `.playback` for audio apps, `.voicePrompt` mode for navigation voice prompts. Deactivate when done.
+- **File Protection**: Use `.completeUntilFirstUserAuthentication` for files needed while iPhone is locked
+- **Notifications**: Only enable `.allowInCarPlay` for driving-relevant notification categories. Keep content brief.
 - **Error Handling**: Gracefully handle failures and provide user feedback
 
 ## Common Patterns
@@ -873,6 +1012,200 @@ let listTemplate = CPListTemplate(title: "Music", sections: [section])
 // Update images dynamically
 let newImages = [image1, image2, image3, image4, image5]
 imageRowItem.update(newImages)
+```
+
+### Notifications in CarPlay
+```swift
+import UserNotifications
+
+// Request CarPlay notification permission
+UNUserNotificationCenter.current().requestAuthorization(
+    options: [.alert, .sound, .carPlay]
+) { granted, error in
+    // Handle result
+}
+
+// Create a category that appears in CarPlay
+let carPlayCategory = UNNotificationCategory(
+    identifier: "DELIVERY_UPDATE",
+    actions: [],
+    intentIdentifiers: [],
+    options: [.allowInCarPlay]
+)
+
+UNUserNotificationCenter.current().setNotificationCategories([carPlayCategory])
+```
+
+### Navigation Multitouch (iOS 26+)
+```swift
+// Multitouch is automatically enabled on iOS 26+
+// Handle zoom changes in your map delegate
+extension CarPlaySceneDelegate: CPMapTemplateDelegate {
+    func mapTemplate(_ mapTemplate: CPMapTemplate,
+                     panWith direction: CPMapTemplate.PanDirection) {
+        // Update map viewport for pan gestures
+        updateMapViewport(direction: direction)
+    }
+
+    func mapTemplateDidBeginPanGesture(_ mapTemplate: CPMapTemplate) {
+        // User started panning — pause auto-follow
+    }
+
+    func mapTemplate(_ mapTemplate: CPMapTemplate,
+                     didEndPanGestureWithVelocity velocity: CGPoint) {
+        // Pan ended — optionally resume auto-follow
+    }
+}
+```
+
+### Navigation Voice Prompts
+```swift
+import AVFoundation
+
+class NavigationVoiceManager {
+    private let synthesizer = AVSpeechSynthesizer()
+
+    func speak(_ instruction: String) {
+        let session = AVAudioSession.sharedInstance()
+        try? session.setCategory(
+            .playback,
+            mode: .voicePrompt,
+            options: [.duckOthers, .interruptSpokenAudioAndMixWithOthers]
+        )
+        try? session.setActive(true)
+
+        let utterance = AVSpeechUtterance(string: instruction)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        synthesizer.speak(utterance)
+    }
+
+    func stop() {
+        synthesizer.stopSpeaking(at: .immediate)
+        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+    }
+}
+```
+
+### Navigation Re-route (iOS 17.4+)
+```swift
+// When the driver deviates from the planned route
+func handleReroute(session: CPNavigationSession, trip: CPTrip) {
+    // Calculate new route
+    calculateNewRoute(from: currentLocation, to: trip.destination) { newRouteChoice in
+        // Resume trip with new route
+        session.resumeTrip(for: trip, with: newRouteChoice)
+
+        // Update maneuvers for the new route
+        session.upcomingManeuvers = self.buildManeuvers(for: newRouteChoice)
+    }
+}
+```
+
+### Navigation Metadata for Instrument Cluster / HUD (iOS 17.4+)
+```swift
+// Enable metadata forwarding to vehicle HUD and instrument cluster
+extension CarPlaySceneDelegate: CPMapTemplateDelegate {
+    func mapTemplateShouldProvideNavigationMetadata(
+        _ mapTemplate: CPMapTemplate
+    ) -> Bool {
+        // Return true to forward maneuver data to vehicle displays
+        return true
+    }
+}
+
+// Provide route information for the instrument cluster
+func updateInstrumentCluster(
+    controller: CPInstrumentClusterController,
+    maneuvers: [CPManeuver],
+    laneGuidances: [CPLaneGuidance],
+    trip: CPTrip,
+    estimates: [CPManeuver: CPTravelEstimates]
+) {
+    let routeInfo = CPRouteInformation(
+        maneuvers: maneuvers,
+        laneGuidances: laneGuidances,
+        currentManeuvers: [maneuvers.first].compactMap { $0 },
+        currentLaneGuidance: laneGuidances.first,
+        trip: trip,
+        maneuverTravelEstimates: estimates
+    )
+    // Route info is automatically forwarded when metadata is enabled
+}
+```
+
+### Widgets in CarPlay (iOS 26+)
+```swift
+import WidgetKit
+import SwiftUI
+
+struct MyCarPlayWidget: Widget {
+    let kind: String = "CarPlayWidget"
+
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+            CarPlayWidgetView(entry: entry)
+        }
+        .configurationDisplayName("Quick Status")
+        .description("Shows status on CarPlay home screen.")
+        .supportedFamilies([.accessoryCircular, .accessoryRectangular])
+    }
+}
+
+struct CarPlayWidgetView: View {
+    var entry: Provider.Entry
+
+    var body: some View {
+        VStack {
+            Image(systemName: "car.fill")
+            Text(entry.statusText)
+                .font(.caption)
+        }
+    }
+}
+```
+
+### Live Activities in CarPlay (iOS 26+)
+```swift
+import ActivityKit
+
+struct DeliveryAttributes: ActivityAttributes {
+    public struct ContentState: Codable, Hashable {
+        var status: String
+        var eta: Date
+    }
+    var orderNumber: String
+}
+
+// Configure activity to appear in CarPlay
+let content = ActivityContent(
+    state: DeliveryAttributes.ContentState(
+        status: "On the way",
+        eta: Date().addingTimeInterval(600)
+    ),
+    staleDate: nil
+)
+
+let activity = try Activity<DeliveryAttributes>.request(
+    attributes: DeliveryAttributes(orderNumber: "12345"),
+    content: content,
+    pushType: .token
+)
+
+// In your widget configuration, add CarPlay support:
+// .supplementalActivityFamilies([.carPlay])
+```
+
+### Launching Other Apps
+```swift
+// Open another app from CarPlay (e.g., hand off to phone for payment)
+func openCompanionApp(scene: CPTemplateApplicationScene) {
+    guard let url = URL(string: "myapp://complete-order") else { return }
+    scene.open(url, options: nil) { success in
+        if success {
+            print("Opened companion app")
+        }
+    }
+}
 ```
 
 ## Reference Documentation

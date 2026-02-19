@@ -24,6 +24,7 @@ A template that displays a navigation overlay that your app draws on the map.
 ### Handling Map Template Events
 • **mapDelegate** - The object that serves as the delegate of the map template.
 • **CPMapTemplateDelegate** - The protocol an object implements to handle events from a map template.
+• **mapTemplateShouldProvideNavigationMetadata(_:)** - Returns a Boolean value indicating whether the map template should provide navigation metadata to the vehicle's instrument cluster or HUD. (iOS 17.4+)
 
 ### Managing Map Buttons
 • **mapButtons** - An array of map buttons on the trailing bottom corner of the map template.
@@ -110,6 +111,7 @@ An object that represents an active route guidance session.
 • **finishTrip()** - Tells the navigation session to finish the trip.
 • **pauseTrip(for:description:)** - Tells the navigation session to pause the trip for the specified reason.
 • **pauseTrip(for:description:turnCardColor:)** -
+• **resumeTrip(for:with:)** - Resumes navigation for a trip with an updated route choice after a reroute. (iOS 17.4+)
 • **CPNavigationSession.PauseReason** - A set of reasons for pausing a trip.
 
 ### Managing Upcoming Maneuvers
@@ -337,3 +339,88 @@ An alert that displays map- or navigation-related information to the user.
 
 ### Enumerations
 • **CPNavigationAlert.DismissalContext** - A set of reasons for dismissing a navigation alert.
+
+
+---
+
+# CPManeuverType
+
+**Technology:** CarPlay
+**Type:** enum
+**Platforms:** iOS 17.4, iPadOS 17.4, Mac Catalyst 17.4
+
+## Overview
+A value that represents the type of maneuver for a navigation instruction. Set on `CPManeuver.maneuverType`.
+
+## Cases
+• **noTurn** - Continue straight with no turn.
+• **leftTurn** - Turn left.
+• **rightTurn** - Turn right.
+• **straightAhead** - Proceed straight ahead.
+• **uTurn** - Make a U-turn.
+• **followRoad** - Follow the current road.
+• **enterRoundabout** - Enter a roundabout.
+• **exitRoundabout** - Exit a roundabout.
+• **offRamp** - Take an off-ramp.
+• **onRamp** - Take an on-ramp.
+• **arriveEndOfRoute** - Arrive at the end of the route.
+• **startRoute** - Begin the route.
+• **arriveAtDestination** - Final arrival at the destination.
+• **keepLeft** - Keep left.
+• **keepRight** - Keep right.
+• **enter** - Enter (e.g., highway).
+• **exit** - Exit (e.g., highway).
+• **merge** - Merge into traffic.
+• **toManeuverSharpLeft** - Sharp left turn.
+• **toManeuverSharpRight** - Sharp right turn.
+• **toManeuverSlightLeft** - Slight left turn.
+• **toManeuverSlightRight** - Slight right turn.
+• **changeRoad** - Road name change.
+• **changeHighway** - Highway change.
+• **changeHighwayLeft** - Change highway, take left.
+• **changeHighwayRight** - Change highway, take right.
+• **turnAtEnd** - Turn at the end of the road.
+• **arrivedAtDestinationLeft** - Destination on the left.
+• **arrivedAtDestinationRight** - Destination on the right.
+• **panRoute** - Pan route overview.
+• **trafficJamLeft** - Traffic jam ahead, keep left.
+• **trafficJamRight** - Traffic jam ahead, keep right.
+• **ferryBoat** - Board a ferry.
+• **pedestrian** - Pedestrian path.
+• **tollGate** - Pass through a toll gate.
+• **serviceArea** - Service area available.
+• **chargingStation** - Charging station available.
+• **parking** - Parking available.
+• **restArea** - Rest area available.
+
+
+---
+
+# CPJunctionType
+
+**Technology:** CarPlay
+**Type:** enum
+**Platforms:** iOS 17.4, iPadOS 17.4, Mac Catalyst 17.4
+
+## Overview
+A value that represents the type of junction associated with a maneuver. Set on `CPManeuver.junctionType`.
+
+## Cases
+• **intersection** - A standard intersection.
+• **roundabout** - A roundabout junction.
+
+
+---
+
+# CPTrafficSide
+
+**Technology:** CarPlay
+**Type:** enum
+**Platforms:** iOS 17.4, iPadOS 17.4, Mac Catalyst 17.4
+
+## Overview
+A value that represents which side of the road traffic drives on. Set on `CPManeuver.trafficSide`.
+
+## Cases
+• **right** - Traffic drives on the right side of the road.
+• **left** - Traffic drives on the left side of the road.

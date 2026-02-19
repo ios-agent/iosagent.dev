@@ -72,6 +72,7 @@ A selectable row in a list template.
 • **detailText** - The list item's secondary text.
 • **setDetailText(_:)** - Updates the list item's secondary text.
 • **image** - The image that the list item displays in its leading region.
+• **maximumImageSize** - The maximum size for the list item's image. Use this to query the recommended image dimensions for the current display.
 
 ### Managing Playback Information
 • **isExplicitContent** - A Boolean value that determines whether the list item displays its explicit content indicator.
@@ -150,6 +151,14 @@ A list template row that displays a series of images.
 • **update(_:)** - Adds, removes, reorders, or updates the images in the list item's image row.
 • **maximumImageSize** - The maximum size of an image that an image row can display.
 • **CPMaximumNumberOfGridImages** - The maximum number of images that an image row can contain.
+
+### Element Style (iOS 26+)
+• **elementStyle** - The visual style applied to images in the row. Controls layout, spacing, and rendering of the image grid. Available styles:
+  - `.default` — Standard grid layout
+  - `.rounded` — Images displayed with rounded corners
+  - `.circular` — Images displayed as circles
+  - `.card` — Images displayed as card elements with shadows
+  - `.banner` — Images displayed as wide banner elements
 
 ### Managing Selection
 • **listImageRowHandler** - An optional closure that CarPlay invokes when the user selects an image.

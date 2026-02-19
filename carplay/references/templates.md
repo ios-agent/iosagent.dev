@@ -134,7 +134,7 @@ A container template that displays and manages other templates, presenting them 
 ### Managing the Templates
 • **templates** - The tab bar's templates.
 • **updateTemplates(_:)** - Adds, removes, reorders, or updates the tab bar's templates.
-• **maximumTabCount** - The maximum number of tabs that the template can display.
+• **maximumTabCount** - The maximum number of tabs that the template can display. Audio apps are limited to 4 tabs; all other categories support up to 5 tabs.
 
 ### Getting the Selected Template
 • **selectedTemplate** - The currently selected template in the tab bar.
@@ -215,6 +215,10 @@ A template that provides information for a point of interest, food order, parkin
 ### Managing the Actions
 • **actions** - The actions that the template displays.
 
+### Navigation Bar Buttons (iOS 16+)
+• **leadingNavigationBarButtons** - An array of bar buttons displayed in the leading area of the information template's navigation bar.
+• **trailingNavigationBarButtons** - An array of bar buttons displayed in the trailing area of the information template's navigation bar.
+
 
 ---
 
@@ -261,6 +265,13 @@ A template that displays a voice control indicator during audio input.
 
 ### Getting Available States
 • **voiceControlStates** - The array of voice control states available to the template.
+
+### Action Buttons (iOS 26.4+)
+• **actionButtons** - An array of action buttons displayed below the voice control visualization. Use for quick-action commands in voice-based conversational apps.
+
+### Navigation Bar Buttons (iOS 26.4+)
+• **leadingNavigationBarButtons** - An array of bar buttons displayed in the leading area of the navigation bar.
+• **trailingNavigationBarButtons** - An array of bar buttons displayed in the trailing area of the navigation bar.
 
 
 ---

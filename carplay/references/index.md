@@ -7,6 +7,8 @@ This directory contains detailed API documentation organized by category.
 - [Api Reference](api_reference.md)
 - [Audio](audio.md)
 - [Communication](communication.md)
+- [Dashboard](dashboard.md)
+- [Developer Guide](developer_guide.md)
 - [Getting Started](getting_started.md)
 - [Navigation](navigation.md)
 - [Poi](poi.md)
